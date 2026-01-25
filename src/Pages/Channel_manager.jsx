@@ -113,7 +113,7 @@ function Channel_manager() {
 
 
                     <div className="col-lg-6 p-3 text-center">
-                        <img src={img3} alt="" style={{ maxWidth: "80%" }} />
+                        
                     </div>
 
                     <div className="col-lg-6 p-4 px-5">

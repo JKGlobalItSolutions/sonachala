@@ -5,8 +5,6 @@ import { Link } from "react-router-dom";
 
 const Navbar = () => {
   const [showSolutions, setShowSolutions] = useState(false);
-  const [activeMenu, setActiveMenu] = useState(null);
-  const [menuIndex, setMenuIndex] = useState(0);
   const menuRef = useRef(null);
 
   // CLOSE ON OUTSIDE CLICK
@@ -14,7 +12,6 @@ const Navbar = () => {
     const handleClickOutside = (e) => {
       if (menuRef.current && !menuRef.current.contains(e.target)) {
         setShowSolutions(false);
-        setActiveMenu(null);
       }
     };
     document.addEventListener("mousedown", handleClickOutside);
@@ -22,10 +19,11 @@ const Navbar = () => {
       document.removeEventListener("mousedown", handleClickOutside);
   }, []);
 
-  const menus = ["Products", "Services", "Integrations", "Other Services"];
-
   return (
-    <>
+    <div
+      className="position-relative"
+      onMouseLeave={() => setShowSolutions(false)}
+    >
       {/* TOP BAR */}
       <nav
         className="navbar"
@@ -43,15 +41,13 @@ const Navbar = () => {
       <nav className="navbar navbar-expand-md bg-white border-bottom">
         <div className="container justify-content-center">
           <ul className="navbar-nav gap-4">
-
             <li className="nav-item">
               <Link className="nav-link text-dark" to="/">Home</Link>
             </li>
 
             {/* SOLUTIONS */}
             <li
-              className="nav-item position-relative"
-              ref={menuRef}
+              className="nav-item"
               onMouseEnter={() => setShowSolutions(true)}
             >
               <span
@@ -61,90 +57,6 @@ const Navbar = () => {
               >
                 Solutions ▾
               </span>
-
-              {showSolutions && (
-                <>
-                  {/* LEFT MENU BOX */}
-                  <div
-                    className="position-absolute bg-white shadow"
-                    style={{
-                      top: "42px",
-                      left: "0",
-                      width: "220px",
-                      zIndex: 1000,
-                      borderBottom: "3px solid #6aa400",
-                    }}
-                  >
-                    {menus.map((item, index) => (
-                      <div
-                        key={item}
-                        onMouseEnter={() => {
-                          setActiveMenu(item);
-                          setMenuIndex(index);
-                        }}
-                        style={{
-                          padding: "12px 16px",
-                          cursor: "pointer",
-                          fontWeight: 500,
-                          backgroundColor:
-                            activeMenu === item ? "#f5f5f5" : "#fff",
-                        }}
-                      >
-                        {item} ▸
-                      </div>
-                    ))}
-                  </div>
-
-                  {/* RIGHT SUB MENU – STRAIGHT ALIGN */}
-                  {activeMenu && (
-                    <div
-                      className="position-absolute bg-white shadow"
-                      style={{
-                        top: `${42 + menuIndex * 44}px`,
-                        left: "220px",
-                        width: "280px",
-                        zIndex: 1000,
-                        borderBottom: "3px solid #6aa400",
-                      }}
-                    >
-                      {activeMenu === "Products" && (
-                        <>
-                          <Link className="d-block px-3 py-2 text-dark text-decoration-none" to="/channel_manager">Channel Manager</Link>
-                          <Link className="d-block px-3 py-2 text-dark text-decoration-none" to="/cloud-pms">Cloud PMS</Link>
-                          <Link className="d-block px-3 py-2 text-dark text-decoration-none" to="/cloud-pos">Cloud POS</Link>
-                          <Link className="d-block px-3 py-2 text-dark text-decoration-none" to="/booking-engine">Booking Engine</Link>
-                          <Link className="d-block px-3 py-2 text-dark text-decoration-none" to="/website-builder">Website Builder</Link>
-                        </>
-                      )}
-
-                      {activeMenu === "Services" && (
-                        <>
-                          <Link className="d-block px-3 py-2 text-dark text-decoration-none" to="/ota-listing">OTA Listing</Link>
-                          <Link className="d-block px-3 py-2 text-dark text-decoration-none" to="/revenue-management">Revenue Management</Link>
-                          <Link className="d-block px-3 py-2 text-dark text-decoration-none" to="/stay-b2b">Stay B2B</Link>
-                        </>
-                      )}
-
-                      {activeMenu === "Integrations" && (
-                        <>
-                          <Link className="d-block px-3 py-2 text-dark text-decoration-none" to="/pms-apis">PMS (APIs for PMS)</Link>
-                          <Link className="d-block px-3 py-2 text-dark text-decoration-none" to="/payment-gateways">Payment Gateways</Link>
-                          <Link className="d-block px-3 py-2 text-dark text-decoration-none" to="/meta-search">Meta Search Engines</Link>
-                        </>
-                      )}
-
-                      {activeMenu === "Other Services" && (
-                        <Link
-                          className="d-block px-3 py-2 text-dark text-decoration-none"
-                          to="/sonachala-connect"
-                        >
-                          Sonachala Connect
-                        </Link>
-                      )}
-                    </div>
-                  )}
-                </>
-              )}
             </li>
 
             <li className="nav-item">
@@ -154,11 +66,249 @@ const Navbar = () => {
             <li className="nav-item">
               <Link className="nav-link text-dark" to="/contact">Contact</Link>
             </li>
-
           </ul>
         </div>
       </nav>
-    </>
+
+      {/* MEGA DROPDOWN */}
+      {showSolutions && (
+        <div
+          ref={menuRef}
+          className="position-absolute bg-white shadow"
+          style={{
+            top: "100%",
+            left: 0,
+            width: "100%",
+            zIndex: 1000,
+            borderBottom: "3px solid #6aa400",
+            padding: "20px 0",
+          }}
+        >
+          <div className="container">
+            <div className="row">
+
+              {/* OTA COLUMN */}
+              <div className="col-md-4">
+                <h5 style={{ fontWeight: 600, marginBottom: "10px" }}>
+                  <span style={{ marginRight: "8px" }}>⚙️</span>OTA
+                </h5>
+                <div
+                  style={{
+                    height: "2px",
+                    backgroundColor: "#007bff",
+                    marginBottom: "15px",
+                  }}
+                ></div>
+                <ul className="list-unstyled">
+                  <li
+                    style={{
+                      padding: "8px 0",
+                      borderBottom: "1px solid #e9ecef",
+                    }}
+                  >
+                    <Link
+                      className="text-dark text-decoration-none d-flex align-items-center"
+                      to="/Ota"
+                      style={{ fontSize: "14px" }}
+                    >
+                      <span style={{ marginRight: "8px" }}>▸</span>Sonagiri
+                    </Link>
+                  </li>
+                </ul>
+              </div>
+
+
+              {/* PRODUCTS COLUMN */}
+              <div className="col-md-4">
+                <h5 style={{ fontWeight: 600, marginBottom: "10px" }}>
+                  <span style={{ marginRight: "8px" }}>📦</span>Products
+                </h5>
+                <div
+                  style={{
+                    height: "2px",
+                    backgroundColor: "#007bff",
+                    marginBottom: "15px",
+                  }}
+                ></div>
+                <ul className="list-unstyled">
+                  <li
+                    style={{
+                      padding: "8px 0",
+                      borderBottom: "1px solid #e9ecef",
+                    }}
+                  >
+                    <Link
+                      className="text-dark text-decoration-none d-flex align-items-center"
+                      to="/channel_manager"
+                      style={{ fontSize: "14px" }}
+                    >
+                      <span style={{ marginRight: "8px" }}>▸</span>Channel Manager
+                    </Link>
+                  </li>
+                  <li
+                    style={{
+                      padding: "8px 0",
+                      borderBottom: "1px solid #e9ecef",
+                    }}
+                  >
+                    <Link
+                      className="text-dark text-decoration-none d-flex align-items-center"
+                      to="/Pms"
+                      style={{ fontSize: "14px" }}
+                    >
+                      <span style={{ marginRight: "8px" }}>▸</span>PMS
+                    </Link>
+                  </li>
+                  <li
+                    style={{
+                      padding: "8px 0",
+                      borderBottom: "1px solid #e9ecef",
+                    }}
+                  >
+                    <Link
+                      className="text-dark text-decoration-none d-flex align-items-center"
+                      to="/Pos"
+                      style={{ fontSize: "14px" }}
+                    >
+                      <span style={{ marginRight: "8px" }}>▸</span>POS
+                    </Link>
+                  </li>
+                  <li
+                    style={{
+                      padding: "8px 0",
+                      borderBottom: "1px solid #e9ecef",
+                    }}
+                  >
+                    <Link
+                      className="text-dark text-decoration-none d-flex align-items-center"
+                      to="/BookingEngine"
+                      style={{ fontSize: "14px" }}
+                    >
+                      <span style={{ marginRight: "8px" }}>▸</span>Booking Engine
+                    </Link>
+                  </li>
+                  <li style={{ padding: "8px 0" }}>
+                    <Link
+                      className="text-dark text-decoration-none d-flex align-items-center"
+                      to="/WebsiteBuilder"
+                      style={{ fontSize: "14px" }}
+                    >
+                      <span style={{ marginRight: "8px" }}>▸</span>Website Builder
+                    </Link>
+                  </li>
+                </ul>
+              </div>
+
+              {/* SERVICES COLUMN */}
+              <div className="col-md-4">
+                <h5 style={{ fontWeight: 600, marginBottom: "10px" }}>
+                  <span style={{ marginRight: "8px" }}>⚙️</span>Services
+                </h5>
+                <div
+                  style={{
+                    height: "2px",
+                    backgroundColor: "#007bff",
+                    marginBottom: "15px",
+                  }}
+                ></div>
+                <ul className="list-unstyled">
+                  <li
+                    style={{
+                      padding: "8px 0",
+                      borderBottom: "1px solid #e9ecef",
+                    }}
+                  >
+                    <Link
+                      className="text-dark text-decoration-none d-flex align-items-center"
+                      to="/Ota"
+                      style={{ fontSize: "14px" }}
+                    >
+                      <span style={{ marginRight: "8px" }}>▸</span>OTA Listing
+                    </Link>
+                  </li>
+                  <li
+                    style={{
+                      padding: "8px 0",
+                      borderBottom: "1px solid #e9ecef",
+                    }}
+                  >
+                    <Link
+                      className="text-dark text-decoration-none d-flex align-items-center"
+                      to="/Revenue"
+                      style={{ fontSize: "14px" }}
+                    >
+                      <span style={{ marginRight: "8px" }}>▸</span>Revenue Management
+                    </Link>
+                  </li>
+                  <li style={{ padding: "8px 0" }}>
+                    <Link
+                      className="text-dark text-decoration-none d-flex align-items-center"
+                      to="/B2b"
+                      style={{ fontSize: "14px" }}
+                    >
+                      <span style={{ marginRight: "8px" }}>▸</span>Stay B2B
+                    </Link>
+                  </li>
+                </ul>
+              </div>
+
+              {/* INTEGRATIONS COLUMN */}
+              <div className="col-md-4">
+                <h5 style={{ fontWeight: 600, marginBottom: "10px" }}>
+                  <span style={{ marginRight: "8px" }}>🔗</span>Integrations
+                </h5>
+                <div
+                  style={{
+                    height: "2px",
+                    backgroundColor: "#007bff",
+                    marginBottom: "15px",
+                  }}
+                ></div>
+                <ul className="list-unstyled">
+                  <li
+                    style={{
+                      padding: "8px 0",
+                      borderBottom: "1px solid #e9ecef",
+                    }}
+                  >
+                    <Link
+                      className="text-dark text-decoration-none d-flex align-items-center"
+                      to="/API"
+                      style={{ fontSize: "14px" }}
+                    >
+                      <span style={{ marginRight: "8px" }}>▸</span>PMS (APIs for PMS)
+                    </Link>
+                  </li>
+                  <li
+                    style={{
+                      padding: "8px 0",
+                      borderBottom: "1px solid #e9ecef",
+                    }}
+                  >
+                    <Link
+                      className="text-dark text-decoration-none d-flex align-items-center"
+                      to="/paymentgateway"
+                      style={{ fontSize: "14px" }}
+                    >
+                      <span style={{ marginRight: "8px" }}>▸</span>Payment Gateways
+                    </Link>
+                  </li>
+                  <li style={{ padding: "8px 0" }}>
+                    <Link
+                      className="text-dark text-decoration-none d-flex align-items-center"
+                      to="/Googleads"
+                      style={{ fontSize: "14px" }}
+                    >
+                      <span style={{ marginRight: "8px" }}>▸</span>Google Ads
+                    </Link>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
+    </div>
   );
 };
 
