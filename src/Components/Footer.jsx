@@ -1,5 +1,6 @@
 
-import img1 from "../assets/footer/img1.png";
+import img1 from "../assets/Footer/img1.png";
+import { Link } from "react-router-dom";
 
 
 const Footer = () => {
@@ -40,21 +41,28 @@ const Footer = () => {
             <h6 style={{ fontWeight: "600", marginBottom: "10px" }}>
               Quick Links
             </h6>
+
             <div style={{ width: "50px", borderBottom: "2px dashed #fff", marginBottom: "15px" }}></div>
 
             {[
-              "About Us",
-              "Pricing",
-              "Reseller",
-              "Blog",
-              "Contact Us",
-              "Login",
-              "Terms of Use",
-              "Refund & Cancellation",
-              "Privacy Policy",
+              { text: "Home", link: "/home" },
+              { text: "Pricing", link: "/pricing" },
+              { text: "Reseller", link: "/reseller" },
+              // { text: "Blog", link: null },
+              { text: "Contact Us", link: "/contact" },
+              // { text: "Login", link: null },
+              // { text: "Terms of Use", link: null },
+              // { text: "Refund & Cancellation", link: null },
+              // { text: "Privacy Policy", link: null },
             ].map((item, i) => (
               <p key={i} style={{ marginBottom: "8px", fontSize: "14px" }}>
-                ❯❯ {item}
+                ❯❯ {item.link ? (
+                  <Link to={item.link} style={{ color: "#ffffff", textDecoration: "none" }}>
+                    {item.text}
+                  </Link>
+                ) : (
+                  item.text
+                )}
               </p>
             ))}
           </div>
@@ -64,22 +72,25 @@ const Footer = () => {
             <h6 style={{ fontWeight: "600", marginBottom: "10px" }}>
               Our Services
             </h6>
+
             <div style={{ width: "50px", borderBottom: "2px dashed #fff", marginBottom: "15px" }}></div>
 
             {[
-              "Channel Manager",
-              "Cloud PMS",
-              "Cloud POS",
-              "Booking Engine",
-              "Website Builder",
-              "OTA Listing",
-              "Stay B2B",
-              "APIs for PMS",
-              "Payment Gateway Integration",
-              "Meta Search Engines",
+              { text: "Channel Manager", link: "/channel_manager" },
+              { text: "Cloud PMS", link: "/Pms" },
+              { text: "Cloud POS", link: "/Pos" },
+              { text: "Booking Engine", link: "/BookingEngine" },
+              { text: "Website Builder", link: "/WebsiteBuilder" },
+              { text: "OTA Listing", link: "/Ota" },
+              { text: "Stay B2B", link: "/B2b" },
+              { text: "APIs for PMS", link: "/API" },
+              { text: "Payment Gateway Integration", link: "/paymentgateway" },
+              { text: "Meta Search Engines", link: "/Googleads" },
             ].map((item, i) => (
               <p key={i} style={{ marginBottom: "8px", fontSize: "14px" }}>
-                ❯❯ {item}
+                ❯❯ <Link to={item.link} style={{ color: "#ffffff", textDecoration: "none" }}>
+                  {item.text}
+                </Link>
               </p>
             ))}
           </div>
@@ -92,9 +103,17 @@ const Footer = () => {
         <div className="row align-items-center">
           <div className="col-md-6">
             <div style={{ display: "flex", gap: "10px" }}>
-              {["f", "▶", "in"].map((icon, i) => (
-                <div
+              {[
+                { icon: "f", url: "https://www.facebook.com/share/1D87eESrPY/ ", label: "Facebook" },
+                { icon: "▶", url: "https://youtube.com/@sonachalarm?si=WElaD8n_bC53-HsY", label: "YouTube" },
+                { icon: "in", url: "https://www.linkedin.com/company/jk-kanakku/", label: "LinkedIn" }
+              ].map((item, i) => (
+                <a
                   key={i}
+                  href={item.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={item.label}
                   style={{
                     width: "36px",
                     height: "36px",
@@ -106,10 +125,11 @@ const Footer = () => {
                     justifyContent: "center",
                     fontWeight: "bold",
                     cursor: "pointer",
+                    textDecoration: "none",
                   }}
                 >
-                  {icon}
-                </div>
+                  {item.icon}
+                </a>
               ))}
             </div>
           </div>
@@ -129,6 +149,9 @@ const Footer = () => {
                 }}
               />
             
+            <div style={{ marginTop: "20px", fontSize: "16px", fontWeight: "600", textAlign:"right" }}>
+              Contact Us 8608601049
+            </div>
           </div>
         </div>
       </div>
@@ -143,7 +166,7 @@ const Footer = () => {
           fontSize: "13px",
         }}
       >
-        Copyright 2025 | www.sonachala.com | All rights reserved.
+        Copyright 2025 | <Link to="/" style={{ color: "#ffffff", textDecoration: "none" }}>www.sonachala.com</Link> | All rights reserved.
       </div>
     </div>
   );

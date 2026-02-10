@@ -39,11 +39,11 @@ function BookingEngine(){
                         <h1 style={{marginTop:"20px"}}><b>Single Page Booking Engine</b></h1>
                         <p style={{ color: "#095D42", fontSize: "20px", marginTop:"20px" }}>
                          ✔ Instant Rate & Discount Updates
-                         Any change in dates, occupancy, or room selection immediately reflects updated pricing and discounts—ensuring complete accuracy.
+                           Any change in dates, occupancy, or room selection immediately reflects updated pricing and discounts—ensuring complete accuracy.
                         </p>
                         <p style={{ color: "#095D42", fontSize: "20px", marginTop:"20px" }}>
                          ✔ Transparent Price Breakup
-                        Guests can view a detailed price breakdown, including applicable discounts and daily rates for each room, ensuring full transparency.
+                          Guests can view a detailed price breakdown, including applicable discounts and daily rates for each room, ensuring full transparency.
                         </p>
                         <p style={{ color: "#095D42", fontSize: "20px", marginTop:"20px" }}>
                           ✔ User-Centric Design

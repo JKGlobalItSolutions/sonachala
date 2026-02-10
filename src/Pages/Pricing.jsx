@@ -1,6 +1,40 @@
 
 
+import { useState } from "react";
+
 const Pricing = () => {
+  const [showQuoteForm, setShowQuoteForm] = useState(false);
+  const [formData, setFormData] = useState({
+    name: '',
+    hotelName: '',
+    hotelId: '',
+    email: '',
+    phone: ''
+  });
+
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setFormData(prev => ({
+      ...prev,
+      [name]: value
+    }));
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    // Handle form submission here
+    console.log('Quote request:', formData);
+    alert('Thank you for your quote request! We will get back to you soon.');
+    setShowQuoteForm(false);
+    setFormData({
+      name: '',
+      hotelName: '',
+      hotelId: '',
+      email: '',
+      phone: ''
+    });
+  };
+
   return (
     <div
       style={{
@@ -67,6 +101,7 @@ const Pricing = () => {
               >
                 Get Pricing
               </button>
+              
 
               <p style={{ fontWeight: "600" }}>Centralized Hotel Booking System</p>
 
@@ -93,9 +128,12 @@ const Pricing = () => {
                 <p key={i} style={{ fontSize: "14px", marginBottom: "6px" }}>
                   ✦ {item}
                 </p>
+                
               ))}
+               
             </div>
           </div>
+          
 
           {/* CARD 2 */}
           <div className="col-md-4 mb-4">
@@ -156,18 +194,7 @@ const Pricing = () => {
                 </p>
               ))}
 
-              <button
-                style={{
-                  marginTop: "20px",
-                  backgroundColor: "#0B4F3A",
-                  border: "none",
-                  color: "#fff",
-                  padding: "10px 25px",
-                  borderRadius: "30px",
-                }}
-              >
-                Read More
-              </button>
+              
             </div>
           </div>
 
@@ -230,23 +257,265 @@ const Pricing = () => {
                 </p>
               ))}
 
-              <button
-                style={{
-                  marginTop: "20px",
-                  backgroundColor: "#0B4F3A",
-                  border: "none",
-                  color: "#fff",
-                  padding: "10px 25px",
-                  borderRadius: "30px",
-                }}
-              >
-                Read More
-              </button>
+              
             </div>
           </div>
 
         </div>
+
+        {/* GET A QUOTE BUTTON */}
+        <div style={{ marginTop: "60px" }}>
+          <button
+            onClick={() => setShowQuoteForm(true)}
+            style={{
+              backgroundColor: "#fff",
+              border: "2px solid #fff",
+              color: "#0B8F61",
+              padding: "15px 40px",
+              borderRadius: "30px",
+              fontSize: "18px",
+              fontWeight: "600",
+              cursor: "pointer",
+              transition: "all 0.3s ease",
+            }}
+            onMouseOver={(e) => {
+              e.target.style.backgroundColor = "#0B8F61";
+              e.target.style.color = "#fff";
+            }}
+            onMouseOut={(e) => {
+              e.target.style.backgroundColor = "#fff";
+              e.target.style.color = "#0B8F61";
+            }}
+          >
+            Get a Quote
+          </button>
+        </div>
       </div>
+
+      {/* QUOTE FORM MODAL */}
+      {showQuoteForm && (
+        <div
+          style={{
+            position: "fixed",
+            top: 0,
+            left: 0,
+            width: "100%",
+            height: "100%",
+            backgroundColor: "rgba(0, 0, 0, 0.7)",
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            zIndex: 10000,
+          }}
+          onClick={() => setShowQuoteForm(false)}
+        >
+          <div
+            style={{
+              backgroundColor: "#fff",
+              borderRadius: "20px",
+              padding: "40px",
+              maxWidth: "500px",
+              width: "90%",
+              maxHeight: "90vh",
+              overflowY: "auto",
+              position: "relative",
+            }}
+            onClick={(e) => e.stopPropagation()}
+          >
+            <button
+              onClick={() => setShowQuoteForm(false)}
+              style={{
+                position: "absolute",
+                top: "15px",
+                right: "15px",
+                background: "none",
+                border: "none",
+                fontSize: "24px",
+                cursor: "pointer",
+                color: "#666",
+              }}
+            >
+              ×
+            </button>
+
+            <h3
+              style={{
+                color: "#0B8F61",
+                marginBottom: "30px",
+                textAlign: "center",
+                fontWeight: "700",
+              }}
+            >
+              Get a Quote
+            </h3>
+
+            <form onSubmit={handleSubmit}>
+              <div style={{ marginBottom: "20px" }}>
+                <label
+                  style={{
+                    display: "block",
+                    marginBottom: "5px",
+                    fontWeight: "600",
+                    color: "#333",
+                  }}
+                >
+                  Name *
+                </label>
+                <input
+                  type="text"
+                  name="name"
+                  value={formData.name}
+                  onChange={handleInputChange}
+                  required
+                  style={{
+                    width: "100%",
+                    padding: "12px",
+                    border: "1px solid #ddd",
+                    borderRadius: "8px",
+                    fontSize: "16px",
+                    boxSizing: "border-box",
+                  }}
+                />
+              </div>
+
+              <div style={{ marginBottom: "20px" }}>
+                <label
+                  style={{
+                    display: "block",
+                    marginBottom: "5px",
+                    fontWeight: "600",
+                    color: "#333",
+                  }}
+                >
+                  Hotel Name *
+                </label>
+                <input
+                  type="text"
+                  name="hotelName"
+                  value={formData.hotelName}
+                  onChange={handleInputChange}
+                  required
+                  style={{
+                    width: "100%",
+                    padding: "12px",
+                    border: "1px solid #ddd",
+                    borderRadius: "8px",
+                    fontSize: "16px",
+                    boxSizing: "border-box",
+                  }}
+                />
+              </div>
+
+              <div style={{ marginBottom: "20px" }}>
+                <label
+                  style={{
+                    display: "block",
+                    marginBottom: "5px",
+                    fontWeight: "600",
+                    color: "#333",
+                  }}
+                >
+                  Hotel ID
+                </label>
+                <input
+                  type="text"
+                  name="hotelId"
+                  value={formData.hotelId}
+                  onChange={handleInputChange}
+                  style={{
+                    width: "100%",
+                    padding: "12px",
+                    border: "1px solid #ddd",
+                    borderRadius: "8px",
+                    fontSize: "16px",
+                    boxSizing: "border-box",
+                  }}
+                />
+              </div>
+
+              <div style={{ marginBottom: "20px" }}>
+                <label
+                  style={{
+                    display: "block",
+                    marginBottom: "5px",
+                    fontWeight: "600",
+                    color: "#333",
+                  }}
+                >
+                  Email ID *
+                </label>
+                <input
+                  type="email"
+                  name="email"
+                  value={formData.email}
+                  onChange={handleInputChange}
+                  required
+                  style={{
+                    width: "100%",
+                    padding: "12px",
+                    border: "1px solid #ddd",
+                    borderRadius: "8px",
+                    fontSize: "16px",
+                    boxSizing: "border-box",
+                  }}
+                />
+              </div>
+
+              <div style={{ marginBottom: "30px" }}>
+                <label
+                  style={{
+                    display: "block",
+                    marginBottom: "5px",
+                    fontWeight: "600",
+                    color: "#333",
+                  }}
+                >
+                  Phone Number *
+                </label>
+                <input
+                  type="tel"
+                  name="phone"
+                  value={formData.phone}
+                  onChange={handleInputChange}
+                  required
+                  style={{
+                    width: "100%",
+                    padding: "12px",
+                    border: "1px solid #ddd",
+                    borderRadius: "8px",
+                    fontSize: "16px",
+                    boxSizing: "border-box",
+                  }}
+                />
+              </div>
+
+              <button
+                type="submit"
+                style={{
+                  width: "100%",
+                  padding: "15px",
+                  backgroundColor: "#0B8F61",
+                  border: "none",
+                  borderRadius: "8px",
+                  color: "#fff",
+                  fontSize: "16px",
+                  fontWeight: "600",
+                  cursor: "pointer",
+                  transition: "background-color 0.3s ease",
+                }}
+                onMouseOver={(e) => {
+                  e.target.style.backgroundColor = "#0A7A51";
+                }}
+                onMouseOut={(e) => {
+                  e.target.style.backgroundColor = "#0B8F61";
+                }}
+              >
+                Submit Quote Request
+              </button>
+            </form>
+          </div>
+        </div>
+      )}
     </div>
   );
 };

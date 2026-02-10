@@ -103,7 +103,7 @@ function Channel_manager() {
 
                     </div>
                     <div className="col-lg-6 p-3 text-center">
-                        <img src={img2} alt="" style={{ maxWidth: "80%" }} />
+                        <img src={img2} alt="" style={{ maxWidth: "80%", }} />
                     </div>
                 </div>
             </div>
@@ -112,8 +112,10 @@ function Channel_manager() {
                 <div className="row">
 
 
+                   
+
                     <div className="col-lg-6 p-3 text-center">
-                        
+                        <img src={img3} alt="" style={{ maxWidth: "80%" }} />
                     </div>
 
                     <div className="col-lg-6 p-4 px-5">

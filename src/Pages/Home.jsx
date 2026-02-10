@@ -195,7 +195,7 @@ const Home = () => {
                             textAlign: "center",
                         }}
                     >
-                        More than <strong>500+</strong> properties worldwide use Sonachala services
+                        More than <strong>500+</strong> properties in Tamil Nadu use Sonachala services
                     </p>
 
                     {/* RIGHT LINE */}
@@ -215,32 +215,83 @@ const Home = () => {
             <div
                 style={{
                     backgroundColor: "#1E372F",
-                    padding: "10px 0",
+                    padding: "30px 0",
+                    overflow: "hidden",
                 }}
             >
-                <div className="container">
-                    <div className="d-flex flex-wrap justify-content-center align-items-center">
-                        {logos.map((logo, index) => (
-                            <div
-                                key={index}
+                <style>
+                    {`
+                        @keyframes scroll-logos {
+                            0% {
+                                transform: translateX(0);
+                            }
+                            100% {
+                                transform: translateX(-50%);
+                            }
+                        }
+                        
+                        .logo-scroll-container {
+                            display: flex;
+                            animation: scroll-logos 30s linear infinite;
+                            width: fit-content;
+                        }
+                        
+                        .logo-scroll-container:hover {
+                            animation-play-state: paused;
+                        }
+                    `}
+                </style>
+                
+                <div className="logo-scroll-container">
+                    {/* First set of logos */}
+                    {logos.map((logo, index) => (
+                        <div
+                            key={`logo-1-${index}`}
+                            style={{
+                                padding: "0 40px",
+                                display: "flex",
+                                alignItems: "center",
+                                justifyContent: "center",
+                                minWidth: "180px",
+                            }}
+                        >
+                            <img
+                                src={logo}
+                                alt={`company-${index}`}
                                 style={{
-                                    padding: "20px",
+                                    height: "65px",
+                                    width: "auto",
+                                    objectFit: "contain",
+                                    display: "block",
                                 }}
-                            >
-                                <img
-                                    src={logo}
-                                    alt={`company-${index}`}
-                                    style={{
-                                        height: "65px", // 🔥 slightly increased
-                                        width: "auto",
-                                        maxWidth: "100%",
-                                        objectFit: "contain",
-                                        display: "block",
-                                    }}
-                                />
-                            </div>
-                        ))}
-                    </div>
+                            />
+                        </div>
+                    ))}
+                    
+                    {/* Duplicate set for seamless loop */}
+                    {logos.map((logo, index) => (
+                        <div
+                            key={`logo-2-${index}`}
+                            style={{
+                                padding: "0 40px",
+                                display: "flex",
+                                alignItems: "center",
+                                justifyContent: "center",
+                                minWidth: "180px",
+                            }}
+                        >
+                            <img
+                                src={logo}
+                                alt={`company-${index}`}
+                                style={{
+                                    height: "100px",
+                                    width: "auto",
+                                    objectFit: "contain",
+                                    display: "block",
+                                }}
+                            />
+                        </div>
+                    ))}
                 </div>
             </div>
 
@@ -399,7 +450,7 @@ const Home = () => {
             </div>
 
 
-            <div
+            {/* { <div
                 style={{
                     width: "100%",
                     overflow: "hidden",
@@ -414,7 +465,7 @@ const Home = () => {
                         display: "block",
                     }}
                 />
-            </div>
+            </div> } */}
 
 
         </>

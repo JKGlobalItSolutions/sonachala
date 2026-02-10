@@ -16,11 +16,14 @@ import API from "./Pages/API"
 import Paymentgateway from "./Pages/Paymentgateway"
 import Contact from "./Pages/Contact"
 import Googleads from "./Pages/Googleads"
+import ScrollToTop from "./Components/ScrollToTop"; 
+
 
 function App() {
   return (
     <HashRouter basename="/">
       <Navbar />
+      <ScrollToTop />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/pricing" element={<Pricing />} />
@@ -37,6 +40,7 @@ function App() {
         <Route path="/Paymentgateway" element={<Paymentgateway />} />
         <Route path="/Contact" element={<Contact />} />
         <Route path="/Googleads" element={<Googleads />} />
+        
       </Routes>
       <Footer />
     </HashRouter>
