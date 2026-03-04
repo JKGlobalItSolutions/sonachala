@@ -9,15 +9,53 @@ import lg2 from "../assets/Home/lg2.png";
 import lg3 from "../assets/Home/lg3.png";
 import lg4 from "../assets/Home/lg4.png";
 import lg5 from "../assets/Home/lg5.png";
-import lg6 from "../assets/Home/lg6.png";
-import lg7 from "../assets/Home/lg7.png";
-import lg8 from "../assets/Home/lg8.png";
-import lg9 from "../assets/Home/lg9.png";
+// import lg6 from "../assets/Home/lg6.png";
+// import lg7 from "../assets/Home/lg7.png";
+// import lg8 from "../assets/Home/lg8.png";
+// import lg9 from "../assets/Home/lg9.png";
+import lg10 from "../assets/Home/lg10.png";
+import lg11 from "../assets/Home/lg11.png";
+import lg12 from "../assets/Home/lg12.png";
+import lg13 from "../assets/Home/lg13.png";
+import lg14 from "../assets/Home/lg14.png";
+import lg15 from "../assets/Home/lg15.png";
+import lg16 from "../assets/Home/lg16.png";
+import lg17 from "../assets/Home/lg17.png";
+import lg18 from "../assets/Home/lg18.png";
+import lg19 from "../assets/Home/lg19.png";
+import lg20 from "../assets/Home/lg20.png";
+import lg21 from "../assets/Home/lg21.png";
+import lg22 from "../assets/Home/lg22.png";
+import lg23 from "../assets/Home/lg23.png";
+import lg24 from "../assets/Home/lg24.png";
+import lg25 from "../assets/Home/lg25.png";
+import lg26 from "../assets/Home/lg26.png";
+import lg27 from "../assets/Home/lg27.png";
+import lg28 from "../assets/Home/lg28.png";
+import lg29 from "../assets/Home/lg29.png";
+import lg30 from "../assets/Home/lg30.png";
+import lg31 from "../assets/Home/lg31.png";
+import lg32 from "../assets/Home/lg32.png";
+import lg33 from "../assets/Home/lg33.png";
+import lg34 from "../assets/Home/lg34.png";
+import lg35 from "../assets/Home/lg35.png";
+import lg36 from "../assets/Home/lg36.png";
+import lg37 from "../assets/Home/lg37.png";
+import lg38 from "../assets/Home/lg38.png";
+import lg39 from "../assets/Home/lg39.png";
+import lg40 from "../assets/Home/lg40.png";
+import lg41 from "../assets/Home/lg41.png";
+import lg42 from "../assets/Home/lg42.png";
+import lg43 from "../assets/Home/lg43.png";
+import lg44 from "../assets/Home/lg44.png";
+import lg45 from "../assets/Home/lg45.png";
+import lg46 from "../assets/Home/lg46.png";
+import lg47 from "../assets/Home/lg47.png";
 
 
 const Home = () => {
 
-    const logos = [lg1, lg2, lg3, lg4, lg5, lg6, lg7, lg8, lg9];
+    const logos = [lg1, lg2, lg3, lg4, lg5,  lg10, lg11, lg12, lg13, lg14, lg15, lg16, lg17, lg18, lg19, lg20, lg21, lg22, lg23, lg24, lg25, lg26, lg27, lg28, lg29, lg30, lg31, lg32, lg33, lg34, lg35, lg36, lg37, lg38, lg39, lg40, lg41, lg42, lg43, lg44, lg45,lg46,lg47];
 
     const services = [
         {

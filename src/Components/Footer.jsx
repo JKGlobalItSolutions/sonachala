@@ -1,7 +1,5 @@
-
 import img1 from "../assets/Footer/img1.png";
 import { Link } from "react-router-dom";
-
 
 const Footer = () => {
   return (
@@ -16,7 +14,7 @@ const Footer = () => {
         <div className="row">
 
           {/* INDUSTRIES */}
-          <div className="col-md-4">
+          <div className="col-md-3">
             <h6 style={{ fontWeight: "600", marginBottom: "10px" }}>
               Industries We Serve
             </h6>
@@ -37,7 +35,7 @@ const Footer = () => {
           </div>
 
           {/* QUICK LINKS */}
-          <div className="col-md-4">
+          <div className="col-md-3">
             <h6 style={{ fontWeight: "600", marginBottom: "10px" }}>
               Quick Links
             </h6>
@@ -48,27 +46,18 @@ const Footer = () => {
               { text: "Home", link: "/home" },
               { text: "Pricing", link: "/pricing" },
               { text: "Reseller", link: "/reseller" },
-              // { text: "Blog", link: null },
               { text: "Contact Us", link: "/contact" },
-              // { text: "Login", link: null },
-              // { text: "Terms of Use", link: null },
-              // { text: "Refund & Cancellation", link: null },
-              // { text: "Privacy Policy", link: null },
             ].map((item, i) => (
               <p key={i} style={{ marginBottom: "8px", fontSize: "14px" }}>
-                ❯❯ {item.link ? (
-                  <Link to={item.link} style={{ color: "#ffffff", textDecoration: "none" }}>
-                    {item.text}
-                  </Link>
-                ) : (
-                  item.text
-                )}
+                <Link to={item.link} style={{ color: "#ffffff", textDecoration: "none" }}>
+                  ❯❯ {item.text}
+                </Link>
               </p>
             ))}
           </div>
 
           {/* SERVICES */}
-          <div className="col-md-4">
+          <div className="col-md-3">
             <h6 style={{ fontWeight: "600", marginBottom: "10px" }}>
               Our Services
             </h6>
@@ -82,30 +71,79 @@ const Footer = () => {
               { text: "Booking Engine", link: "/BookingEngine" },
               { text: "Website Builder", link: "/WebsiteBuilder" },
               { text: "OTA Listing", link: "/Ota" },
-              { text: "Stay B2B", link: "/B2b" },
-              { text: "APIs for PMS", link: "/API" },
-              { text: "Payment Gateway Integration", link: "/paymentgateway" },
-              { text: "Meta Search Engines", link: "/Googleads" },
             ].map((item, i) => (
               <p key={i} style={{ marginBottom: "8px", fontSize: "14px" }}>
-                ❯❯ <Link to={item.link} style={{ color: "#ffffff", textDecoration: "none" }}>
-                  {item.text}
+                <Link to={item.link} style={{ color: "#ffffff", textDecoration: "none" }}>
+                  ❯❯ {item.text}
                 </Link>
               </p>
             ))}
           </div>
+
+          {/* CONTACT DETAILS */}
+          <div className="col-md-3">
+            <h6 style={{ fontWeight: "600", marginBottom: "10px" }}>
+              Contact Us
+            </h6>
+
+            <div style={{ width: "50px", borderBottom: "2px dashed #fff", marginBottom: "15px" }}></div>
+
+            <p style={{ fontSize: "14px", marginBottom: "8px" }}>
+              Sonachala Technologies
+            </p>
+
+            <p style={{ fontSize: "14px", marginBottom: "8px" }}>
+              Annai Parvathi Nagar, opposite to Collectorate Office, Vengikkal, Tiruvannamalai - 606604
+            </p>
+
+            {/* Phone Numbers */}
+            <p style={{ fontSize: "14px", marginBottom: "8px" }}>
+              📞 <a href="tel:8608601049" style={{ color: "#fff", textDecoration: "none" }}>
+                8608601049
+              </a>
+            </p>
+
+            <p style={{ fontSize: "14px", marginBottom: "8px" }}>
+              📞 <a href="tel:8608600778" style={{ color: "#fff", textDecoration: "none" }}>
+                8608600778
+              </a>
+            </p>
+
+            <p style={{ fontSize: "14px", marginBottom: "8px" }}>
+              📞 <a href="tel:8608600772" style={{ color: "#fff", textDecoration: "none" }}>
+                8608600772
+              </a>
+            </p>
+
+            {/* Emails */}
+            <p style={{ fontSize: "14px", marginBottom: "8px" }}>
+              ✉ <a href="mailto:sonachaloffical@gmail.com" style={{ color: "#fff", textDecoration: "none" }}>
+                sonachaloffical@gmail.com
+              </a>
+            </p>
+
+            <p style={{ fontSize: "14px", marginBottom: "8px" }}>
+              ✉ <a href="mailto:sonachalahelp@gmail.com" style={{ color: "#fff", textDecoration: "none" }}>
+                sonachalahelp@gmail.com
+              </a>
+            </p>
+
+            <p style={{ fontSize: "14px", marginBottom: "8px" }}>
+              ✉ <a href="mailto:info@sonachala.com" style={{ color: "#fff", textDecoration: "none" }}>
+                info@sonachala.com
+              </a>
+            </p>
+          </div>
+
         </div>
 
-        {/* DIVIDER */}
-        <hr style={{ borderColor: "#ffffff55", margin: "40px 0" }} />
-
-        {/* SOCIAL + PAYMENT */}
-        <div className="row align-items-center">
+        {/* SOCIAL */}
+        <div className="row align-items-center mt-4">
           <div className="col-md-6">
             <div style={{ display: "flex", gap: "10px" }}>
               {[
-                { icon: "f", url: "https://www.facebook.com/share/1D87eESrPY/ ", label: "Facebook" },
-                { icon: "▶", url: "https://youtube.com/@sonachalarm?si=WElaD8n_bC53-HsY", label: "YouTube" },
+                { icon: "f", url: "https://www.facebook.com/share/1D87eESrPY/", label: "Facebook" },
+                { icon: "▶", url: "https://youtube.com/@sonachalarm", label: "YouTube" },
                 { icon: "in", url: "https://www.linkedin.com/company/jk-kanakku/", label: "LinkedIn" }
               ].map((item, i) => (
                 <a
@@ -124,33 +162,12 @@ const Footer = () => {
                     alignItems: "center",
                     justifyContent: "center",
                     fontWeight: "bold",
-                    cursor: "pointer",
                     textDecoration: "none",
                   }}
                 >
                   {item.icon}
                 </a>
               ))}
-            </div>
-          </div>
-
-          <div className="col-md-6 text-end">
-            
-              <img
-            
-                src={img1}
-                alt="payment"
-                style={{
-                  height: "35px",
-                  marginLeft: "10px",
-                  backgroundColor: "#fff",
-                  padding: "4px",
-                  borderRadius: "4px",
-                }}
-              />
-            
-            <div style={{ marginTop: "20px", fontSize: "16px", fontWeight: "600", textAlign:"right" }}>
-              Contact Us 8608601049
             </div>
           </div>
         </div>
@@ -166,7 +183,11 @@ const Footer = () => {
           fontSize: "13px",
         }}
       >
-        Copyright 2025 | <Link to="/" style={{ color: "#ffffff", textDecoration: "none" }}>www.sonachala.com</Link> | All rights reserved.
+        Copyright 2025 | 
+        <Link to="/" style={{ color: "#ffffff", textDecoration: "none" }}>
+          {" "}www.sonachala.com{" "}
+        </Link>
+        | All rights reserved.
       </div>
     </div>
   );
